@@ -54,7 +54,7 @@ def get_fields(data_obj: str, data_type: str, name: str):
             'scale': f.scale,
             'domain': f.domain
         }
-        # Append field metadat
+        # Append field metadata
         data_dic_rep['fields'].append(field)
     return data_dic_rep # Return dict representation
 
@@ -86,11 +86,11 @@ def filter_unwanted_fields(parent_field, fields_to_ignore, ignore_cases):
     @output --> Bool --> True specifies the field will be skipped, false specifies the process will continue
 
     '''
-
     if ignore_cases == True:
         fields_to_ignore = [x.lower() for x in fields_to_ignore]
-        parent_field = parent_field.lower()
-    if fields_to_ignore == parent_field:
+        parent_field["name"] = parent_field["name"].lower()
+    if parent_field["name"] in fields_to_ignore:
+        print("Skipped")
         return True
     else:
         return False
@@ -152,7 +152,7 @@ def compare_values_for_each_field(parent, child, comp_file, fields_to_ignore, ig
                 else:
                     length_match = False
                     length_d = {"parent" : field["length"], "child" : matching_child["length"]}
-                    compare_text.write("Length mismatch found in {}. The parent has a length of {} and the length has a type of {}\n".format(field["name"], field["length"], matching_child["length"]))
+                    compare_text.write("Length mismatch found in {}. The parent has a length of {} and the chiled has a length of {}\n".format(field["name"], field["length"], matching_child["length"]))
             
             # Logic if there is no field name match
             else:

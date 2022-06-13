@@ -1,7 +1,7 @@
 {
     "output_loc" : "C:\\Users\\ssellars\\Documents\\CJOC\\SAR\\SchemaCrisis\\comparison.txt",
     "fields_to_ignore" : {
-        "ignore_list" : ["objectid"],
+        "ignore_list" : ["objectid", "SHAPE"],
         "ignore_cases" : true
     }
 }
